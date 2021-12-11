@@ -23,10 +23,6 @@ class BPNN {
     summary() {
         this.model.summary();
     };
-
-    train() {
-        this.model.f
-    }
 };
 
 module.exports = {
