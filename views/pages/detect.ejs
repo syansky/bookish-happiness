@@ -1,0 +1,263 @@
+<%- contentFor('title') %>
+Deteksi Potensi Anda
+
+<%- contentFor('body') %>
+<section class="vh-1" onload="showResult()"></section>
+  <form action="/detect" method="POST">
+    <div class="container h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-xl-9">
+  
+          <h1 class="mb-4">Deteksi Potensi Stroke</h1>
+  
+          <div class="card" style="border-radius: 5px;">
+            <div class="card-body">
+  
+              <h6 class="mb-0">Silakan masukkan data Anda</h6>
+
+              <hr class="mx-n3">
+
+              <div class="row align-items-center pt-1 pb-2">
+                <div class="col-md-3 ps-5">
+                  <p class="mb-0">Nama</p>
+                </div>
+              </div>
+
+              <div class="row align-items-center pt-2 pb-2">
+                <div class="col-sm-9 pe-5">
+                  <input type="text" name="name" class="form-control form-control-sm" required />
+                </div>
+              </div>
+  
+              <hr class="mx-n3">
+
+              <div class="row align-items-center pt-1 pb-2">
+                <div class="col-md-3 ps-5">
+                  <p class="mb-0">Usia</p>
+                </div>
+              </div>
+
+              <div class="row align-items-center pt-2 pb-2">
+                <div class="col-sm-9 pe-5">
+                  <input name="age" type="number" min="1" max="100" class="form-control form-control-sm" required />
+                </div>
+              </div>
+  
+              <hr class="mx-n3">
+
+              <div class="row align-items-center pt-1 pb-2">
+                <div class="col-md-3 ps-5">
+                  <p class="mb-0">Jenis Kelamin</p>
+                </div>
+              </div>
+
+              <div class="row align-items-center pt-2 pb-2">
+                <div class="col-sm-9 pe-5">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="gender" id="genderMale" value="male" required>
+                        <label class="form-check-label" for="genderMale">
+                          Laki-Laki
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="gender" id="genderFemale" value="female">
+                        <label class="form-check-label" for="genderFemale">
+                          Perempuan
+                        </label>
+                      </div>
+                </div>
+              </div>
+  
+              <hr class="mx-n3">
+
+              <div class="row align-items-center pt-1 pb-2">
+                <div class="col-md-3 ps-5">
+                  <p class="mb-0">Indeks masa tubuh</p>
+                </div>
+              </div>
+
+              <div class="row align-items-center pt-2 pb-2">
+                <div class="col-sm-9 pe-5">
+                  <input name="bmi" type="number" min="1" max="100" step="any" class="form-control form-control-sm" required />
+                </div>
+              </div>
+  
+              <hr class="mx-n3">
+
+              <div class="row align-items-center pt-1 pb-2">
+                <div class="col-md-5 ps-5">
+                  <p class="mb-0">Level glukosa darah rata-rata (mg/dL)</p>
+                </div>
+              </div>
+
+              <div class="row align-items-center pt-2 pb-2">
+                <div class="col-sm-9 pe-5">
+                  <input name="glucose" type="number" min="1" max="300" step="any" class="form-control form-control-sm" required />
+                </div>
+              </div>
+  
+              <hr class="mx-n3">
+
+              <div class="row align-items-center pt-1 pb-2">
+                <div class="col-md-5 ps-5">
+                  <p class="mb-0">Daerah tinggal</p>
+                </div>
+              </div>
+
+              <div class="row align-items-center pt-2 pb-2">
+                <div class="col-sm-9 pe-5">
+                    <select name="residence" class="form-select" aria-label="Residence type select" required>
+                        <option disabled selected value>-- Daerah tinggal --</option>
+                        <option value="urban">Pusat Kota</option>
+                        <option value="rural">Daerah</option>
+                      </select>
+                </div>
+              </div>
+  
+              <hr class="mx-n3">
+
+              <div class="row align-items-center pt-1 pb-2">
+                <div class="col-md-5 ps-5">
+                  <p class="mb-0">Jenis pekerjaan</p>
+                </div>
+              </div>
+
+              <div class="row align-items-center pt-2 pb-2">
+                <div class="col-sm-9 pe-5">
+                    <select name="work" class="form-select" aria-label="Work type select" required>
+                        <option disabled selected value>-- Jenis pekerjaan --</option>
+                        <option value="govt-job">Pegawai pemerintahan</option>
+                        <option value="private">Pegawai swasta</option>
+                        <option value="self-employed">Wirausaha</option>
+                        <option value="children">Di bawah usia kerja</option>
+                        <option value="never-worked">Tidak bekerja</option>
+                      </select>
+                </div>
+              </div>
+  
+              <hr class="mx-n3">
+
+              <div class="row align-items-center pt-1 pb-2">
+                <div class="col-md-5 ps-5">
+                  <p class="mb-0">Riwayat Merokok</p>
+                </div>
+              </div>
+
+              <div class="row align-items-center pt-2 pb-2">
+                <div class="col-sm-9 pe-5">
+                    <select name="smoke" class="form-select" aria-label="Smoking type select" required>
+                        <option disabled selected value>-- Riwayat merokok --</option>
+                        <option value="smokes">Merokok(Aktif)</option>
+                        <option value="formerly-smoked">Pernah merokok(Berhenti)</option>
+                        <option value="never-smoked">Tidak pernah merokok</option>
+                      </select>
+                </div>
+              </div>
+  
+              <hr class="mx-n3">
+
+              <div class="row align-items-center pt-1 pb-2">
+                <div class="col-md-5 ps-5">
+                  <p class="mb-0">Pernah menderita hipertensi?</p>
+                </div>
+              </div>
+
+              <div class="row align-items-center pt-2 pb-2">
+                <div class="col-sm-9 pe-5">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="hipertension" id="hipertensionYes" value="yes" required>
+                        <label class="form-check-label" for="hipertensionYes">
+                          Ya
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="hipertension" id="hipertensionNo" value="no">
+                        <label class="form-check-label" for="hipertensionNo">
+                          Tidak
+                        </label>
+                      </div>
+                </div>
+              </div>
+  
+              <hr class="mx-n3">
+
+              <div class="row align-items-center pt-1 pb-2">
+                <div class="col-md-5 ps-5">
+                  <p class="mb-0">Pernah menderita penyakit jantung?</p>
+                </div>
+              </div>
+
+              <div class="row align-items-center pt-2 pb-2">
+                <div class="col-sm-9 pe-5">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="heart" id="heartYes" value="yes" required>
+                        <label class="form-check-label" for="heartYes">
+                          Ya
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="heart" id="hipertensionNo" value="no">
+                        <label class="form-check-label" for="heartNo">
+                          Tidak
+                        </label>
+                      </div>
+                </div>
+              </div>
+  
+              <hr class="mx-n3">
+
+              <div class="row align-items-center pt-1 pb-2">
+                <div class="col-md-3 ps-5">
+                  <p class="mb-0">Pernah menikah?</p>
+                </div>
+              </div>
+
+              <div class="row align-items-center pt-2 pb-2">
+                <div class="col-sm-9 pe-5">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="married" id="marriedYes" value="yes" required>
+                        <label class="form-check-label" for="marriedYes">
+                          Ya
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="married" id="marriedNo" value="no">
+                        <label class="form-check-label" for="marriedNo">
+                          Tidak
+                        </label>
+                      </div>
+                </div>
+              </div>
+  
+              <hr class="mx-n3">
+  
+              <div class="px-1 py-2">
+                <button type="submit" class="btn btn-primary btn-sm">Submit</button>
+              </div>
+
+              <% if (locals.prediction_result) { %>
+                <% if (locals.prediction_result == 0) { %>
+                  <p>Hasil Terakhir: <b>Anda tidak berpotensi stroke</b></p>
+                <% } else { %>
+                  <p>Hasil terakhir: <b>Anda berpotensi stroke</b></p>
+                <% } %>
+              <% } %>
+  
+            </div>
+          </div>
+  
+        </div>
+      </div>
+    </div>
+  </form>
+</section>
+
+<script>
+  window.onload = function() {
+    const result = <%= locals.prediction_result %> === 1?'Anda berpotensi stroke':'Anda tidak berpotensi stroke';
+    alertify.alert().setting('autoReset', true);
+    alertify.alert().setting('pinnable', false);
+    alertify.alert().setting('transition', 'zoom');
+    alertify.alert(result);
+}
+</script>
