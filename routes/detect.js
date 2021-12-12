@@ -23,69 +23,95 @@ router.post('/', async (req, res) => {
 
     var ageVal, genderVal, bmiVal, glucoseVal, residenceVal, workVal, smokeVal, hipertensionVal, heartVal, marriedVal;
     
-    ageVal = parseFloat(age);
-    bmiVal = parseFloat(bmi);
-    glucoseVal = parseFloat(glucose);
+    const GENDER_MIN = 1;
+    const GENDER_MAX = 3;
+    const AGE_MIN = 0.08;
+    const AGE_MAX = 82;
+    const HIPERTENSION_MIN = 0;
+    const HIPERTENSION_MAX = 1;
+    const HEART_MIN = 0;
+    const HEART_MAX = 1;
+    const MARRIED_MIN = 0;
+    const MARRIED_MAX = 1;
+    const WORK_MIN = 1;
+    const WORK_MAX = 5;
+    const RESIDENCE_MIN = 1;
+    const RESIDENCE_MAX = 2;
+    const GLUCOSE_MIN = 55.12;
+    const GLUCOSE_MAX = 271.74;
+    const BMI_MIN = 10.3;
+    const BMI_MAX = 78;
+    const SMOKE_MIN = 1;
+    const SMOKE_MAX = 4;
+
+    function normalize(min, max, x) {
+        y = (x-min) / (max-min);
+        return y;
+    }
+
+    ageVal = parseFloat(normalize(AGE_MIN, AGE_MAX, age));
+    bmiVal = parseFloat(normalize(BMI_MIN, BMI_MAX, bmi));
+    glucoseVal = parseFloat(normalize(GLUCOSE_MIN, GLUCOSE_MAX, glucose));
 
     // Parameter mapping
     if (gender === 'male') {
-        genderVal = 1;
+        genderVal = parseFloat(normalize(GENDER_MIN, GENDER_MAX, 1));
     }
     else {
-        genderVal = 0;
+        genderVal = parseFloat(normalize(GENDER_MIN, GENDER_MAX, 0));
     }
 
     if (residence === 'urban') {
-        residenceVal = 2;
+        residenceVal = parseFloat(normalize(RESIDENCE_MIN, RESIDENCE_MAX, 2));
     }
     else {
-        residenceVal = 1;
+        residenceVal = parseFloat(normalize(RESIDENCE_MIN, RESIDENCE_MAX, 1));
     }
 
     if (work === 'govt-job') {
-        workVal = 5;
+        workVal = parseFloat(normalize(WORK_MIN, WORK_MAX, 5));
     }
     else if (work === 'private') {
-        workVal = 4;
+        workVal = parseFloat(normalize(WORK_MIN, WORK_MAX, 4));
     }
     else if (work === 'self-employed') {
-        workVal = 3;
+        workVal = parseFloat(normalize(WORK_MIN, WORK_MAX, 3));
     }
     else if (work === 'children') {
-        workVal = 2;
+        workVal = parseFloat(normalize(WORK_MIN, WORK_MAX, 2));
     }else {
-        workVal = 1;
+        workVal = parseFloat(normalize(WORK_MIN, WORK_MAX, 1));
     }
 
     if (smoke === 'smokes') {
-        smokeVal = 3;
+        smokeVal = parseFloat(normalize(SMOKE_MIN, SMOKE_MAX, 3));
     }
     else if (smoke === 'formerly-smoked') {
-        smokeVal = 2;
+        smokeVal = parseFloat(normalize(SMOKE_MIN, SMOKE_MAX, 2));
     }
     else {
-        smokeVal = 4;
+        smokeVal = parseFloat(normalize(SMOKE_MIN, SMOKE_MAX, 4));
     }
     
     if (hipertension === 'yes') {
-        hipertensionVal = 1;
+        hipertensionVal = parseFloat(normalize(HIPERTENSION_MIN, HIPERTENSION_MAX, 1));
     }
     else {
-        hipertensionVal = 0;
+        hipertensionVal = parseFloat(normalize(HIPERTENSION_MIN, HIPERTENSION_MAX, 0));
     }
 
     if (heart === 'yes') {
-        heartVal = 1;
+        heartVal = parseFloat(normalize(HEART_MIN, HEART_MAX, 1));
     }
     else {
-        heartVal = 0;
+        heartVal = parseFloat(normalize(HEART_MIN, HEART_MAX, 0));
     }
 
     if (married === 'yes') {
-        marriedVal = 1;
+        marriedVal = parseFloat(normalize(MARRIED_MIN, MARRIED_MAX, 1));
     }
     else {
-        marriedVal = 0;
+        marriedVal = parseFloat(normalize(MARRIED_MIN, MARRIED_MAX, 0));
     }
 
     const inputArray = [genderVal, ageVal, hipertensionVal, heartVal, marriedVal, workVal, residenceVal, glucoseVal, bmiVal, smokeVal];
@@ -97,7 +123,7 @@ router.post('/', async (req, res) => {
     predictUserData = async () => {
         await bpnn.load();
         const predictionResult = bpnn.predict(inputTensor).flatten();
-        const resultArray = await predictionResult.array();
+        const resultArray = await tf.round(predictionResult).array();
         console.log(resultArray);
         res.render('pages/detect', { prediction_result: resultArray });
     };

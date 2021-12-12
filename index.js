@@ -26,12 +26,16 @@ app.set("layout extractScripts", true);
 
 // routes
 const index = require('./routes/index');
+const train = require('./routes/train');
 const detect = require('./routes/detect');
+const help = require('./routes/help');
 const about = require('./routes/about');
 
 app.use('/', index);
+app.use('/train', train);
 app.use('/detect', detect);
-app.use('/about', about)
+app.use('/help', help);
+app.use('/about', about);
 
 app.listen(PORT, () => {
     console.log(`Server running at port ${PORT}`);

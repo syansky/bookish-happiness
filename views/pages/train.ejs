@@ -1,0 +1,102 @@
+<%- contentFor('title') %>
+    Pelatihan
+
+    <%- contentFor('body') %>
+        <section class="vh-1">
+            <div class="container h-100">
+                <div class="flex-lg-row d-lg-flex justify-content-center align-items-center h-100">
+                    <div class="col-xl-12">
+                        <div class="card" style="border-radius: 5px;">
+                            <div class="card-body">
+                                <h1 class="mb-4">Pelatihan</h1>
+
+                                <hr class="mx-n3">
+                                <div class="row align-items-center pt-1 pb-2">
+                                    <p class="mt-1 ml-1"><b>Spesifikasi model yang digunakan</b></p>
+                                    <div class="col-xl-12 ps-5" id="surface-summary">
+                                        
+                                    </div>
+                                </div>
+
+                                <br class="mx-n3">
+
+                                <div class="row align-items-center pt-1 pb-2">
+                                    <p class="mt-1 ml-1"><b>Progress pelatihan</b></p>
+                                    <div class="col-xl-12 ps-5" id="surface-progress">
+                                        
+                                    </div>
+                                </div>
+
+                                <br class="mx-n3">
+
+                                <div class="row align-items-center pt-1 pb-2">
+                                    <p class="mt-1 ml-1"><b>Hasil pelatihan</b></p>
+                                    <div class="col-xl-12 ps-5" id="surface-result">
+                                        
+                                    </div>
+                                </div>
+
+                                <br class="mx-n3">
+
+                                <div>
+                                    <button class="btn btn-primary btn-md" type="submit" onclick="train()">Latih</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <script lang="js">
+            async function train() {
+                const surfaceSummary = document.getElementById('surface-summary');
+                const surfaceProgress = document.getElementById('surface-progress');
+                const surfaceResult = document.getElementById('surface-result');
+
+                //const fitCallbacks = tfvis.show.fitCallbacks(surfaceProgress, ['loss', 'acc']);
+
+                // Clean last train data ouput
+                surfaceSummary.innerHTML = '';
+                surfaceProgress.innerHTML = '';
+                surfaceResult.innerHTML = '';
+                
+                // Custom CallbackFunction
+                async function onEpochEnd(epoch, logs) {
+                    historyData.push(logs);
+
+                    var newNode = document.createElement('P');
+                    newNode.innerText = "Epoch: " + epoch + "\n[=====================================]" + " Accuracy:" + logs.acc + " Loss: " + logs.loss;
+                    surfaceProgress.appendChild(newNode);
+                };
+
+                const model = tf.sequential();
+                model.add(tf.layers.dense({ units: 1, inputShape: [1] }));
+                model.compile({
+                loss:'meanSquaredError',
+                optimizer:'sgd', 
+                metrics: ['accuracy']
+                });
+                model.summary();
+                
+                tfvis.show.modelSummary(surfaceSummary, model);
+
+                const xs = tf.tensor2d([-1.0, 0.0, 1.0, 2.0, 3.0, 4.0], [6, 1]);
+                const ys = tf.tensor2d([-3.0, -1.0, 2.0, 3.0, 5.0, 7.0], [6, 1]);
+
+                const historyData = [];
+                await model.fit(xs, ys, {
+                epochs: 20,
+                callbacks: {
+                    onEpochEnd: onEpochEnd
+                }
+                }).then(() => {
+                const test = tf.tensor2d([10], [1,1]);
+                const prediction = model.predict(test);
+                prediction.print();
+                });
+
+                console.log(historyData);
+                tfvis.show.history(surfaceResult, historyData, ['loss', 'acc']);
+            };
+          </script>
