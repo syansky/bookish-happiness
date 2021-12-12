@@ -1,0 +1,42 @@
+{
+    "gender": {
+        "GENDER_MIN" : 1,
+        "GENDER_MAX" : 3
+    }, 
+    "age": {
+        "AGE_MIN" : 0.08,
+        "AGE_MAX" : 82
+    }, 
+    "hipertension": {
+        "HIPERTENSION_MIN" : 0,
+        "HIPERTENSION_MAX" : 1
+    }, 
+    "heart": {
+        "HEART_MIN" : 0,
+        "HEART_MAX" : 1
+    }, 
+    "married": {
+        "MARRIED_MIN" : 0,
+        "MARRIED_MAX" : 1
+    }, 
+    "work": {
+        "WORK_MIN" : 1,
+        "WORK_MAX" : 5
+    }, 
+    "residence": {
+        "RESIDENCE_MIN" : 1,
+        "RESIDENCE_MAX" : 2
+    },
+    "glucose": {
+        "GLUCOSE_MIN": 55.12,
+        "GLUCOSE_MAX": 271.74
+    },
+    "bmi": {
+        "BMI_MIN": 10.3,
+        "BMI_MAX": 78
+    },
+    "smoke": {
+        "SMOKE_MIN": 1,
+        "SMOKE_MAX": 4
+    }
+}

@@ -3,6 +3,7 @@ const router = express.Router();
 const tf = require('@tensorflow/tfjs');
 
 const {BPNN} = require('../bpnn-model.js');
+const datasetConst = require('../public/dataset/dataset_config.json');
 
 router.get('/', async (req, res) => {
     res.render('pages/detect');
@@ -23,26 +24,26 @@ router.post('/', async (req, res) => {
 
     var ageVal, genderVal, bmiVal, glucoseVal, residenceVal, workVal, smokeVal, hipertensionVal, heartVal, marriedVal;
     
-    const GENDER_MIN = 1;
-    const GENDER_MAX = 3;
-    const AGE_MIN = 0.08;
-    const AGE_MAX = 82;
-    const HIPERTENSION_MIN = 0;
-    const HIPERTENSION_MAX = 1;
-    const HEART_MIN = 0;
-    const HEART_MAX = 1;
-    const MARRIED_MIN = 0;
-    const MARRIED_MAX = 1;
-    const WORK_MIN = 1;
-    const WORK_MAX = 5;
-    const RESIDENCE_MIN = 1;
-    const RESIDENCE_MAX = 2;
-    const GLUCOSE_MIN = 55.12;
-    const GLUCOSE_MAX = 271.74;
-    const BMI_MIN = 10.3;
-    const BMI_MAX = 78;
-    const SMOKE_MIN = 1;
-    const SMOKE_MAX = 4;
+    const GENDER_MIN = datasetConst.gender.GENDER_MIN;
+    const GENDER_MAX = datasetConst.gender.GENDER_MAX;
+    const AGE_MIN = datasetConst.age.AGE_MIN;
+    const AGE_MAX = datasetConst.age.AGE_MAX;
+    const HIPERTENSION_MIN = datasetConst.hipertension.HIPERTENSION_MIN;
+    const HIPERTENSION_MAX = datasetConst.hipertension.HIPERTENSION_MAX;
+    const HEART_MIN = datasetConst.heart.HEART_MIN;
+    const HEART_MAX = datasetConst.heart.HEART_MAX;
+    const MARRIED_MIN = datasetConst.married.MARRIED_MIN;
+    const MARRIED_MAX = datasetConst.married.MARRIED_MAX;
+    const WORK_MIN = datasetConst.work.WORK_MIN;
+    const WORK_MAX = datasetConst.work.WORK_MAX;
+    const RESIDENCE_MIN = datasetConst.residence.RESIDENCE_MIN;
+    const RESIDENCE_MAX = datasetConst.residence.RESIDENCE_MAX;
+    const GLUCOSE_MIN = datasetConst.glucose.GLUCOSE_MIN;
+    const GLUCOSE_MAX = datasetConst.glucose.GLUCOSE_MAX;
+    const BMI_MIN = datasetConst.bmi.BMI_MIN;
+    const BMI_MAX = datasetConst.bmi.BMI_MAX;
+    const SMOKE_MIN = datasetConst.smoke.SMOKE_MIN;
+    const SMOKE_MAX = datasetConst.smoke.SMOKE_MAX;
 
     function normalize(min, max, x) {
         y = (x-min) / (max-min);
