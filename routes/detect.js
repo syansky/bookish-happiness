@@ -6,7 +6,7 @@ const {BPNN} = require('../bpnn-model.js');
 const datasetConst = require('../public/dataset/dataset_config.json');
 
 router.get('/', async (req, res) => {
-    res.render('pages/detect');
+    res.render('pages/detect', { name: '' });
 });
 
 router.post('/', async (req, res) => {
