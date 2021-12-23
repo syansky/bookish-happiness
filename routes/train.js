@@ -6,16 +6,26 @@ const {BPNN} = require('../bpnn-model.js');
 
 router.get('/', async (req, res) => {
     const bpnn = new BPNN();
-    predictUserData = async () => {
-        await bpnn.load();
-        const predictionResult = bpnn.predict(inputTensor).flatten();
-        const resultArray = await tf.round(predictionResult).array();
-        console.log(resultArray);
-        res.render('pages/train', { prediction_result: resultArray });
-    };
 
-    //predictUserData();
-    res.render('pages/train');
+    trainSetup = async () => {
+        await bpnn.load();
+        const trainDataset = bpnn.trainSetup();
+
+        console.log(trainDataset);
+        res.render('pages/train', { trainSet: trainDataset });
+   };
+
+   trainSetup();
+});
+
+router.get('/model', async (req, res) => {
+    const modelJson = 'C:/Users/yansk/Documents/Visual Studio Code/UNTAR/Skripsi/public/model/model.json';
+    res.download(modelJson);
+});
+
+router.get('/group1-shard1of1.bin', async (req, res) => {
+    const modelBin = 'C:/Users/yansk/Documents/Visual Studio Code/UNTAR/Skripsi/public/model/group1-shard1of1.bin';
+    res.download(modelBin);
 });
 
 module.exports = router;

@@ -12,6 +12,41 @@
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-vis"></script>
     <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
 
+    <script>
+
+        function showHideElement(selectSrc, targetElementId, triggerValue) {	
+            selectValue = $('input[name='+selectSrc+']:checked').val();
+            console.log(selectValue);
+            if(selectValue===triggerValue) {
+                document.getElementById(targetElementId[0]).style.display = "block";
+                document.getElementById(targetElementId[1]).style.display = "block";
+                document.getElementById(targetElementId[2]).style.display = "none";
+                document.getElementById(targetElementId[3]).style.display = "none";
+                document.getElementById(targetElementId[4]).style.display = "none";
+                document.getElementById(targetElementId[5]).style.display = "none";
+                
+                document.getElementById(targetElementId[2]).value = '0';
+                document.getElementById(targetElementId[3]).value = '0';
+                document.getElementById(targetElementId[4]).value = '0';
+                document.getElementById(targetElementId[5]).value = '0';
+
+                document.getElementById(targetElementId[7]).required = false;
+                document.getElementById(targetElementId[8]).required = false;
+            } else {
+                document.getElementById(targetElementId[0]).style.display = "none";
+                document.getElementById(targetElementId[1]).style.display = "none";
+                document.getElementById(targetElementId[2]).style.display = "block";
+                document.getElementById(targetElementId[3]).style.display = "block";
+                document.getElementById(targetElementId[4]).style.display = "block";
+                document.getElementById(targetElementId[5]).style.display = "block";
+
+                document.getElementById(targetElementId[0]).value = '0';
+                document.getElementById(targetElementId[1]).value = '0';
+
+                document.getElementById(targetElementId[6]).required = false;
+            }
+        } </script>
+
     <!-- CSS -->
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
     <!-- Default theme -->

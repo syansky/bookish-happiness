@@ -13,7 +13,9 @@ router.post('/', async (req, res) => {
     const name = req.body.name;
     const age = req.body.age;
     const gender = req.body.gender;
-    const bmi = req.body.bmi;
+    const bmiCalculated = req.body.bmi;
+    const height = req.body.height;
+    const weight = req.body.weight;
     const glucose = req.body.glucose;
     const residence = req.body.residence;
     const work = req.body.work;
@@ -21,6 +23,7 @@ router.post('/', async (req, res) => {
     const hipertension = req.body.hipertension;
     const heart = req.body.heart;
     const married = req.body.married;
+    const isBmiCalculated = req.body.bmiCalculated;
 
     var ageVal, genderVal, bmiVal, glucoseVal, residenceVal, workVal, smokeVal, hipertensionVal, heartVal, marriedVal;
     
@@ -50,6 +53,18 @@ router.post('/', async (req, res) => {
         return y;
     }
 
+    // calculate BMI if input are height and weight
+    var bmi;
+    if (isBmiCalculated === 'yes') {
+        bmi = bmiCalculated;
+    }
+    else {
+        const metricHeight = (height / 100);
+        bmi = weight / (metricHeight*metricHeight);
+    }
+
+    console.log(bmi);
+
     ageVal = parseFloat(normalize(AGE_MIN, AGE_MAX, age));
     bmiVal = parseFloat(normalize(BMI_MIN, BMI_MAX, bmi));
     glucoseVal = parseFloat(normalize(GLUCOSE_MIN, GLUCOSE_MAX, glucose));
@@ -59,7 +74,7 @@ router.post('/', async (req, res) => {
         genderVal = parseFloat(normalize(GENDER_MIN, GENDER_MAX, 1));
     }
     else {
-        genderVal = parseFloat(normalize(GENDER_MIN, GENDER_MAX, 0));
+        genderVal = parseFloat(normalize(GENDER_MIN, GENDER_MAX, 2));
     }
 
     if (residence === 'urban') {
@@ -126,7 +141,7 @@ router.post('/', async (req, res) => {
         const predictionResult = bpnn.predict(inputTensor).flatten();
         const resultArray = await tf.round(predictionResult).array();
         console.log(resultArray);
-        res.render('pages/detect', { prediction_result: resultArray });
+        res.render('pages/detect', { name: String(name), prediction_result: resultArray });
     };
 
     predictUserData();
