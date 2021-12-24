@@ -8,22 +8,22 @@ Deteksi Potensi Anda
       <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col-xl-9">
   
-          <h1 class="mb-4">Deteksi Potensi Stroke</h1>
-  
-          <div class="card" style="border-radius: 5px;">
+          <div class="card mb-3" style="border-radius: 5px;" data-aos="zoom-in" data-aos-duration="1250">
+            <h1 class="mb-4 ml-4 mt-2" data-aos="fade-in" data-aos-duration="1250">Deteksi Potensi Stroke</h1>
+
             <div class="card-body">
   
-              <h6 class="mb-0">Silakan masukkan data Anda</h6>
+              <h6 class="mb-0" data-aos="fade-up" data-aos-duration="1250">Silakan masukkan data Anda</h6>
 
               <hr class="mx-n3">
 
-              <div class="row align-items-center pt-1 pb-2">
+              <div class="row align-items-center pt-1 pb-2" data-aos="fade-up" data-aos-duration="1250">
                 <div class="col-md-3 ps-5">
                   <p class="mb-0">Nama</p>
                 </div>
               </div>
 
-              <div class="row align-items-center pt-2 pb-2">
+              <div class="row align-items-center pt-2 pb-2" data-aos="fade-up" data-aos-duration="1250">
                 <div class="col-sm-9 pe-5">
                   <input type="text" name="name" class="form-control form-control-sm" required />
                 </div>
@@ -31,13 +31,13 @@ Deteksi Potensi Anda
   
               <hr class="mx-n3">
 
-              <div class="row align-items-center pt-1 pb-2">
+              <div class="row align-items-center pt-1 pb-2" data-aos="fade-up" data-aos-duration="1250">
                 <div class="col-md-3 ps-5">
                   <p class="mb-0">Usia</p>
                 </div>
               </div>
 
-              <div class="row align-items-center pt-2 pb-2">
+              <div class="row align-items-center pt-2 pb-2" data-aos="fade-up" data-aos-duration="1250">
                 <div class="col-sm-9 pe-5">
                   <input name="age" type="number" min="1" max="150" class="form-control form-control-sm" required />
                 </div>
@@ -45,13 +45,13 @@ Deteksi Potensi Anda
   
               <hr class="mx-n3">
 
-              <div class="row align-items-center pt-1 pb-2">
+              <div class="row align-items-center pt-1 pb-2" data-aos="fade-up" data-aos-duration="1250">
                 <div class="col-md-3 ps-5">
                   <p class="mb-0">Jenis Kelamin</p>
                 </div>
               </div>
 
-              <div class="row align-items-center pt-2 pb-2">
+              <div class="row align-items-center pt-2 pb-2" data-aos="fade-up" data-aos-duration="1250">
                 <div class="col-sm-9 pe-5">
                     <div class="form-check">
                         <input class="form-check-input" type="radio" name="gender" id="genderMale" value="male" required>
@@ -70,13 +70,13 @@ Deteksi Potensi Anda
   
               <hr class="mx-n3">
 
-              <div class="row align-items-center pt-1 pb-2">
+              <div class="row align-items-center pt-1 pb-2" data-aos="fade-up" data-aos-duration="1250">
                 <div class="col-lg-9 ps-5">
                   <p class="mb-0">Pernah menghitung Indeks masa tubuh?</p>
                 </div>
               </div>
 
-              <div class="row align-items-center pt-2 pb-2">
+              <div class="row align-items-center pt-2 pb-2" data-aos="fade-up" data-aos-duration="1250">
                 <div class="col-sm-9 pe-5" id="bmiForm" onchange="showHideElement('bmiCalculated', ['bmiLabel', 'bmiText', 'heightLabel', 'heightText', 'weightLabel', 'weightText', 'bmiInput', 'heightInput', 'weightInput'], 'yes')">
                     <div class="form-check">
                         <input class="form-check-input" type="radio" name="bmiCalculated" id="bmiYes" value="yes" required>
@@ -93,37 +93,37 @@ Deteksi Potensi Anda
                 </div>
               </div>
 
-              <div class="row align-items-center pt-1 pb-2" style="display: none;" id="bmiLabel">
+              <div class="row align-items-center pt-1 pb-2" style="display: none;" id="bmiLabel" data-aos="fade-up" data-aos-duration="1250">
                 <div class="col-md-5 ps-5">
                   <p class="mb-0">Nilai Indeks masa tubuh (kg/m<sup>2</sup>)</p>
                 </div>
               </div>
 
-              <div class="row align-items-center pt-2 pb-2" style="display: none;" id="bmiText">
+              <div class="row align-items-center pt-2 pb-2" style="display: none;" id="bmiText" data-aos="fade-up" data-aos-duration="1250">
                 <div class="col-sm-9 pe-5">
                   <input id="bmiInput" name="bmi" type="number" min="1" max="250" step="any" class="form-control form-control-sm" required />
                 </div>
               </div>
 
-              <div class="row align-items-center pt-1 pb-2" style="display: none;" id="heightLabel">
+              <div class="row align-items-center pt-1 pb-2" style="display: none;" id="heightLabel" data-aos="fade-up" data-aos-duration="1250">
                 <div class="col-md-3 ps-5">
                   <p class="mb-0">Tinggi badan (cm)</p>
                 </div>
               </div>
 
-              <div class="row align-items-center pt-2 pb-2" style="display: none;" id="heightText">
+              <div class="row align-items-center pt-2 pb-2" style="display: none;" id="heightText" data-aos="fade-up" data-aos-duration="1250">
                 <div class="col-sm-9 pe-5">
                   <input id="heightInput" name="height" type="number" min="1" max="280" step="any" class="form-control form-control-sm" required />
                 </div>
               </div>
 
-              <div class="row align-items-center pt-1 pb-2" style="display: none;" id="weightLabel">
+              <div class="row align-items-center pt-1 pb-2" style="display: none;" id="weightLabel" data-aos="fade-up" data-aos-duration="1250">
                 <div class="col-md-3 ps-5">
                   <p class="mb-0">Berat badan (kg)</p>
                 </div>
               </div>
 
-              <div class="row align-items-center pt-2 pb-2" style="display: none;" id="weightText">
+              <div class="row align-items-center pt-2 pb-2" style="display: none;" id="weightText" data-aos="fade-up" data-aos-duration="1250">
                 <div class="col-sm-9 pe-5">
                   <input id="weightInput" name="weight" type="number" min="1" max="635" step="any" class="form-control form-control-sm" required />
                 </div>
@@ -131,13 +131,13 @@ Deteksi Potensi Anda
   
               <hr class="mx-n3">
 
-              <div class="row align-items-center pt-1 pb-2">
+              <div class="row align-items-center pt-1 pb-2" data-aos="fade-up" data-aos-duration="1250">
                 <div class="col-md-5 ps-5">
                   <p class="mb-0">Level glukosa darah rata-rata (mg/dL)</p>
                 </div>
               </div>
 
-              <div class="row align-items-center pt-2 pb-2">
+              <div class="row align-items-center pt-2 pb-2" data-aos="fade-up" data-aos-duration="1250">
                 <div class="col-sm-9 pe-5">
                   <input name="glucose" type="number" min="1" max="2656" step="any" class="form-control form-control-sm" required />
                 </div>
@@ -145,13 +145,13 @@ Deteksi Potensi Anda
   
               <hr class="mx-n3">
 
-              <div class="row align-items-center pt-1 pb-2">
+              <div class="row align-items-center pt-1 pb-2" data-aos="fade-up" data-aos-duration="1250">
                 <div class="col-md-5 ps-5">
                   <p class="mb-0">Daerah tinggal</p>
                 </div>
               </div>
 
-              <div class="row align-items-center pt-2 pb-2">
+              <div class="row align-items-center pt-2 pb-2" data-aos="fade-up" data-aos-duration="1250">
                 <div class="col-sm-9 pe-5">
                     <select name="residence" class="form-select" aria-label="Residence type select" required>
                         <option disabled selected value>-- Daerah tinggal --</option>
@@ -163,13 +163,13 @@ Deteksi Potensi Anda
   
               <hr class="mx-n3">
 
-              <div class="row align-items-center pt-1 pb-2">
+              <div class="row align-items-center pt-1 pb-2" data-aos="fade-up" data-aos-duration="1250">
                 <div class="col-md-5 ps-5">
                   <p class="mb-0">Jenis pekerjaan</p>
                 </div>
               </div>
 
-              <div class="row align-items-center pt-2 pb-2">
+              <div class="row align-items-center pt-2 pb-2" data-aos="fade-up" data-aos-duration="1250">
                 <div class="col-sm-9 pe-5">
                     <select name="work" class="form-select" aria-label="Work type select" required>
                         <option disabled selected value>-- Jenis pekerjaan --</option>
@@ -184,13 +184,13 @@ Deteksi Potensi Anda
   
               <hr class="mx-n3">
 
-              <div class="row align-items-center pt-1 pb-2">
+              <div class="row align-items-center pt-1 pb-2" data-aos="fade-up" data-aos-duration="1250">
                 <div class="col-md-5 ps-5">
                   <p class="mb-0">Riwayat Merokok</p>
                 </div>
               </div>
 
-              <div class="row align-items-center pt-2 pb-2">
+              <div class="row align-items-center pt-2 pb-2" data-aos="fade-up" data-aos-duration="1250">
                 <div class="col-sm-9 pe-5">
                     <select name="smoke" class="form-select" aria-label="Smoking type select" required>
                         <option disabled selected value>-- Riwayat merokok --</option>
@@ -203,13 +203,13 @@ Deteksi Potensi Anda
   
               <hr class="mx-n3">
 
-              <div class="row align-items-center pt-1 pb-2">
+              <div class="row align-items-center pt-1 pb-2" data-aos="fade-up" data-aos-duration="1250">
                 <div class="col-md-5 ps-5">
                   <p class="mb-0">Pernah menderita hipertensi?</p>
                 </div>
               </div>
 
-              <div class="row align-items-center pt-2 pb-2">
+              <div class="row align-items-center pt-2 pb-2" data-aos="fade-up" data-aos-duration="1250">
                 <div class="col-sm-9 pe-5">
                     <div class="form-check">
                         <input class="form-check-input" type="radio" name="hipertension" id="hipertensionYes" value="yes" required>
@@ -228,13 +228,13 @@ Deteksi Potensi Anda
   
               <hr class="mx-n3">
 
-              <div class="row align-items-center pt-1 pb-2">
+              <div class="row align-items-center pt-1 pb-2" data-aos="fade-up" data-aos-duration="1250">
                 <div class="col-md-5 ps-5">
                   <p class="mb-0">Pernah menderita penyakit jantung?</p>
                 </div>
               </div>
 
-              <div class="row align-items-center pt-2 pb-2">
+              <div class="row align-items-center pt-2 pb-2" data-aos="fade-up" data-aos-duration="1250">
                 <div class="col-sm-9 pe-5">
                     <div class="form-check">
                         <input class="form-check-input" type="radio" name="heart" id="heartYes" value="yes" required>
@@ -253,13 +253,13 @@ Deteksi Potensi Anda
   
               <hr class="mx-n3">
 
-              <div class="row align-items-center pt-1 pb-2">
+              <div class="row align-items-center pt-1 pb-2" data-aos="fade-up" data-aos-duration="1250">
                 <div class="col-md-3 ps-5">
                   <p class="mb-0">Pernah menikah?</p>
                 </div>
               </div>
 
-              <div class="row align-items-center pt-2 pb-2">
+              <div class="row align-items-center pt-2 pb-2" data-aos="fade-up" data-aos-duration="1250">
                 <div class="col-sm-9 pe-5">
                     <div class="form-check">
                         <input class="form-check-input" type="radio" name="married" id="marriedYes" value="yes" required>
@@ -278,7 +278,7 @@ Deteksi Potensi Anda
   
               <hr class="mx-n3">
   
-              <div class="px-1 py-2">
+              <div class="px-1 py-2" data-aos="fade-in" data-aos-duration="1850">
                 <button type="submit" class="btn btn-primary btn-sm">Submit</button>
               </div>
 
