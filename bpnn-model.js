@@ -31,9 +31,9 @@ class BPNN {
         this.model.summary();
     };
 
-    trainSetup() {
+    async trainSetup() {
         function normalize(min, max, x) {
-            y = (x-min) / (max-min);
+            var y = (x-min) / (max-min);
             return y;
         }
 
@@ -68,7 +68,7 @@ class BPNN {
         const values = [
             normalize(xs.gender, GENDER_MIN, GENDER_MAX), 
             normalize(xs.age, AGE_MIN, AGE_MAX), 
-            normalize(xs.hipertension, HIPERTENSION_MIN, HIPERTENSIONMAX), 
+            normalize(xs.hipertension, HIPERTENSION_MIN, HIPERTENSION_MAX), 
             normalize(xs.heart, HEART_MIN, HEART_MAX), 
             normalize(xs.married, MARRIED_MIN, MARRIED_MAX), 
             normalize(xs.work, WORK_MIN, WORK_MAX), 
@@ -80,19 +80,32 @@ class BPNN {
         return {xs: values, ys: ys.stroke};
         };
 
+        const trainingData =
+    tf.data.csv(TRAIN_DATA_PATH, {columnConfigs: {stroke: {isLabel: true}}})
+        .map(csvTransform)
+        .shuffle(TRAINING_DATA_LENGTH)
+        .batch(TRAINING_DATA_LENGTH);
+
         // Load all training data in one batch to use for evaluation
         const trainingValidationData =
-        tf.data.csv(TRAIN_DATA_PATH, {columnConfigs: {pitch_code: {isLabel: true}}})
+        tf.data.csv(TRAIN_DATA_PATH, {columnConfigs: {stroke: {isLabel: true}}})
             .map(csvTransform)
             .batch(TRAINING_DATA_LENGTH);
 
         // Load all test data in one batch to use for evaluation
         const testValidationData =
-        tf.data.csv(TEST_DATA_PATH, {columnConfigs: {pitch_code: {isLabel: true}}})
+        tf.data.csv(TEST_DATA_PATH, {columnConfigs: {stroke: {isLabel: true}}})
             .map(csvTransform)
             .batch(TEST_DATA_LENGTH);
 
-        return trainingValidationData;
+             await this.model.compile({
+                loss: 'binaryCrossentropy', 
+                optimizer: 'adam', 
+                metrics: ['accuracy']
+            });
+
+        const config = {epochs: 100};
+        await this.model.fitDataset(trainingValidationData, config);
     }
 };
 

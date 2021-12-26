@@ -49,7 +49,7 @@ router.post('/', async (req, res) => {
     const SMOKE_MAX = datasetConst.smoke.SMOKE_MAX;
 
     function normalize(min, max, x) {
-        y = (x-min) / (max-min);
+        var y = (x-min) / (max-min);
         return y;
     }
 

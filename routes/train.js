@@ -9,7 +9,7 @@ router.get('/', async (req, res) => {
 
     trainSetup = async () => {
         await bpnn.load();
-        const trainDataset = bpnn.trainSetup();
+        const trainDataset = await bpnn.trainSetup();
 
         console.log(trainDataset);
         res.render('pages/train', { trainSet: trainDataset });
