@@ -39,7 +39,8 @@ Deteksi Potensi Anda
 
               <div class="row align-items-center pt-2 pb-2" data-aos="fade-up" data-aos-duration="1250">
                 <div class="col-sm-9 pe-5">
-                  <input name="age" type="number" min="1" max="100" class="form-control form-control-sm" required />
+                  <input name="age" type="number" min="1" max="100" class="form-control form-control-sm" required oninvalid="this.setCustomValidity('Mohon masukkan usia anda')"
+                  oninput="setCustomValidity('')"/>
                 </div>
               </div>
   
@@ -54,7 +55,8 @@ Deteksi Potensi Anda
               <div class="row align-items-center pt-2 pb-2" data-aos="fade-up" data-aos-duration="1250">
                 <div class="col-sm-9 pe-5">
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="gender" id="genderMale" value="male" required>
+                        <input class="form-check-input" type="radio" name="gender" id="genderMale" value="male" required oninvalid="this.setCustomValidity('Mohon pilih salah satu pilihan berikut')"
+                        oninput="setCustomValidity('')">
                         <label class="form-check-label" for="genderMale">
                           Laki-Laki
                         </label>
@@ -79,7 +81,8 @@ Deteksi Potensi Anda
               <div class="row align-items-center pt-2 pb-2" data-aos="fade-up" data-aos-duration="1250">
                 <div class="col-sm-9 pe-5" id="bmiForm" onchange="showHideElement('bmiCalculated', ['bmiLabel', 'bmiText', 'heightLabel', 'heightText', 'weightLabel', 'weightText', 'bmiInput', 'heightInput', 'weightInput'], 'yes')">
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="bmiCalculated" id="bmiYes" value="yes" required>
+                        <input class="form-check-input" type="radio" name="bmiCalculated" id="bmiYes" value="yes" required oninvalid="this.setCustomValidity('Mohon pilih salah satu pilihan berikut')"
+                        oninput="setCustomValidity('')">
                         <label class="form-check-label" for="bmiYes">
                           Pernah
                         </label>
@@ -101,7 +104,8 @@ Deteksi Potensi Anda
 
               <div class="row align-items-center pt-2 pb-2" style="display: none;" id="bmiText" data-aos="fade-up" data-aos-duration="1250">
                 <div class="col-sm-9 pe-5">
-                  <input id="bmiInput" name="bmi" type="number" min="1" max="250" step="any" class="form-control form-control-sm" required />
+                  <input id="bmiInput" name="bmi" type="number" min="1" max="250" step="any" class="form-control form-control-sm" required oninvalid="this.setCustomValidity('Mohon masukkan indeks masa tubuh anda')"
+                  oninput="setCustomValidity('')"/>
                 </div>
               </div>
 
@@ -113,7 +117,8 @@ Deteksi Potensi Anda
 
               <div class="row align-items-center pt-2 pb-2" style="display: none;" id="heightText" data-aos="fade-up" data-aos-duration="1250">
                 <div class="col-sm-9 pe-5">
-                  <input id="heightInput" name="height" type="number" min="1" max="280" step="any" class="form-control form-control-sm" required />
+                  <input id="heightInput" name="height" type="number" min="1" max="280" step="any" class="form-control form-control-sm" required oninvalid="this.setCustomValidity('Mohon masukkan tinggi badan anda')"
+                  oninput="setCustomValidity('')"/>
                 </div>
               </div>
 
@@ -125,7 +130,8 @@ Deteksi Potensi Anda
 
               <div class="row align-items-center pt-2 pb-2" style="display: none;" id="weightText" data-aos="fade-up" data-aos-duration="1250">
                 <div class="col-sm-9 pe-5">
-                  <input id="weightInput" name="weight" type="number" min="1" max="635" step="any" class="form-control form-control-sm" required />
+                  <input id="weightInput" name="weight" type="number" min="1" max="635" step="any" class="form-control form-control-sm" required oninvalid="this.setCustomValidity('Mohon masukkan berat badan anda')"
+                  oninput="setCustomValidity('')"/>
                 </div>
               </div>
   
@@ -153,7 +159,8 @@ Deteksi Potensi Anda
 
               <div class="row align-items-center pt-2 pb-2" data-aos="fade-up" data-aos-duration="1250">
                 <div class="col-sm-9 pe-5">
-                    <select name="residence" class="form-select" aria-label="Residence type select" required>
+                    <select name="residence" class="form-select" aria-label="Residence type select" required oninvalid="this.setCustomValidity('Mohon pilih salah satu pilihan berikut')"
+                    oninput="setCustomValidity('')">
                         <option disabled selected value>-- Daerah tinggal --</option>
                         <option value="urban">Pusat Kota</option>
                         <option value="rural">Daerah</option>
@@ -171,7 +178,8 @@ Deteksi Potensi Anda
 
               <div class="row align-items-center pt-2 pb-2" data-aos="fade-up" data-aos-duration="1250">
                 <div class="col-sm-9 pe-5">
-                    <select name="work" class="form-select" aria-label="Work type select" required>
+                    <select name="work" class="form-select" aria-label="Work type select" required oninvalid="this.setCustomValidity('Mohon pilih salah satu pilihan berikut')"
+                    oninput="setCustomValidity('')">
                         <option disabled selected value>-- Jenis pekerjaan --</option>
                         <option value="govt-job">Pegawai pemerintahan</option>
                         <option value="private">Pegawai swasta</option>
@@ -192,7 +200,8 @@ Deteksi Potensi Anda
 
               <div class="row align-items-center pt-2 pb-2" data-aos="fade-up" data-aos-duration="1250">
                 <div class="col-sm-9 pe-5">
-                    <select name="smoke" class="form-select" aria-label="Smoking type select" required>
+                    <select name="smoke" class="form-select" aria-label="Smoking type select" required oninvalid="this.setCustomValidity('Mohon pilih salah satu pilihan berikut')"
+                    oninput="setCustomValidity('')">
                         <option disabled selected value>-- Riwayat merokok --</option>
                         <option value="smokes">Merokok(Aktif)</option>
                         <option value="formerly-smoked">Pernah merokok(Berhenti)</option>
@@ -212,7 +221,8 @@ Deteksi Potensi Anda
               <div class="row align-items-center pt-2 pb-2" data-aos="fade-up" data-aos-duration="1250">
                 <div class="col-sm-9 pe-5">
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="hipertension" id="hipertensionYes" value="yes" required>
+                        <input class="form-check-input" type="radio" name="hipertension" id="hipertensionYes" value="yes" required oninvalid="this.setCustomValidity('Mohon pilih salah satu pilihan berikut')"
+                        oninput="setCustomValidity('')">
                         <label class="form-check-label" for="hipertensionYes">
                           Ya
                         </label>
@@ -237,7 +247,8 @@ Deteksi Potensi Anda
               <div class="row align-items-center pt-2 pb-2" data-aos="fade-up" data-aos-duration="1250">
                 <div class="col-sm-9 pe-5">
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="heart" id="heartYes" value="yes" required>
+                        <input class="form-check-input" type="radio" name="heart" id="heartYes" value="yes" required oninvalid="this.setCustomValidity('Mohon pilih salah satu pilihan berikut')"
+                        oninput="setCustomValidity('')">
                         <label class="form-check-label" for="heartYes">
                           Ya
                         </label>
@@ -262,7 +273,8 @@ Deteksi Potensi Anda
               <div class="row align-items-center pt-2 pb-2" data-aos="fade-up" data-aos-duration="1250">
                 <div class="col-sm-9 pe-5">
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="married" id="marriedYes" value="yes" required>
+                        <input class="form-check-input" type="radio" name="married" id="marriedYes" value="yes" required oninvalid="this.setCustomValidity('Mohon pilih salah satu pilihan berikut')"
+                        oninput="setCustomValidity('')">
                         <label class="form-check-label" for="marriedYes">
                           Ya
                         </label>
