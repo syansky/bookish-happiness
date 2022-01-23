@@ -10,7 +10,7 @@ router.get('/', async (req, res) => {
 });
 
 router.post('/', async (req, res) => {
-    const name = req.body.name;
+    let name = req.body.name;
     const age = req.body.age;
     const gender = req.body.gender;
     const bmiCalculated = req.body.bmi;
@@ -20,7 +20,7 @@ router.post('/', async (req, res) => {
     const residence = req.body.residence;
     const work = req.body.work;
     const smoke = req.body.smoke;
-    const hipertension = req.body.hipertension;
+    let hipertension = req.body.hipertension;
     const heart = req.body.heart;
     const married = req.body.married;
     const isBmiCalculated = req.body.bmiCalculated;
@@ -63,11 +63,24 @@ router.post('/', async (req, res) => {
         bmi = weight / (metricHeight*metricHeight);
     }
 
-    console.log(bmi);
-
     ageVal = parseFloat(normalize(AGE_MIN, AGE_MAX, age));
     bmiVal = parseFloat(normalize(BMI_MIN, BMI_MAX, bmi));
-    glucoseVal = parseFloat(normalize(GLUCOSE_MIN, GLUCOSE_MAX, glucose));
+
+    // Optional parameter empty handling
+    if (name === '') {
+        name = 'Pengguna';
+    }
+
+    if (glucose.toString() === '') {
+        glucoseVal = 21.7;
+    }
+    else {
+        glucoseVal = parseFloat(normalize(GLUCOSE_MIN, GLUCOSE_MAX, glucose));
+    }
+
+    // if (hipertension === undefined) {
+    //     hipertension = 'no';
+    // }
 
     // Parameter mapping
     if (gender === 'male') {
